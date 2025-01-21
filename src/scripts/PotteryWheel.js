@@ -5,6 +5,6 @@ export function makePottery(s, w, h) {
         shape: s,
         weight: w,
         height: h,
-        id: pKey++
+        id: pKey++ //remember: does not start increasing value until after running once
     };
 }
