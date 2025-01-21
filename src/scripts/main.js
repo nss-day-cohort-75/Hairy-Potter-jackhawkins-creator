@@ -2,6 +2,7 @@
 import { firePottery } from "./Kiln.js";
 import { makePottery } from "./PotteryWheel.js";
 import { toSellOrNotToSell, usePottery } from "./PotteryCatalog.js";
+import { PotteryList } from "./PotteryList.js";
 
 
 // Make 5 pieces of pottery at the wheel
@@ -28,13 +29,30 @@ let sculptureFire = firePottery(sculpture, 2093)
 
 // Determine which ones should be sold, and their price
 let testMug = toSellOrNotToSell(mugFire)
+usePottery(testMug) //we're testing each piece of pottery for cracks and adding to our array if we find none
 
 let testVase = toSellOrNotToSell(vaseFire)
+usePottery(testVase)
 
 let testPlate = toSellOrNotToSell(plateFire)
+usePottery(testPlate)
 
 let testUgPlate = toSellOrNotToSell(ugPlateFire)
+usePottery(testUgPlate)
 
 let testSculpture = toSellOrNotToSell(sculptureFire)
+let filteredPottery = usePottery(testSculpture) //makes our copied array of non-cracked pottery a variable
 
 // Invoke the component function that renders the HTML list
+let potteryHTML = PotteryList(filteredPottery)
+
+export const renderPotteryToDOM = (textHTML) => {
+    const potList = document.querySelector(".potteryList");
+    if (potList) {
+        potList.innerHTML = textHTML;
+    } else {
+        console.error("potteryList ain't here");
+    }
+ };
+
+renderPotteryToDOM(potteryHTML);

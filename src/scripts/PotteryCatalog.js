@@ -16,5 +16,5 @@ export function toSellOrNotToSell(pottery) {
 }
 
 export function usePottery() {
-    return [...sellList]
+    return [...sellList] //googled this method to copy arrays - the spread operator (seemed the easiest)
 }
